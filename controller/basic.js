@@ -1,3 +1,4 @@
+
 const Basic = require("../model/basic")
 
 exports.postbasic=async(req,res)=>{
@@ -24,6 +25,25 @@ exports.getAllStuent=async(req,res)=>{
     try{
         const result= await Basic.find()
         res.status(200).send(result)
+    }catch{
+        res.status(500).send("Server error")
+    }
+}
+
+exports.getStubyId=async(req,res)=>{
+    try{
+        const result= await Basic.findById(req.params._id)
+        res.status(200).send(result)
+    }catch{
+        res.status(500).send("Server error")
+    }
+}
+
+exports.getStates=async(req,res)=>{
+    try{
+        var data= await Basic.find({state:req.params.state})
+        res.status(200).send(data)
+
     }catch{
         res.status(500).send("Server error")
     }

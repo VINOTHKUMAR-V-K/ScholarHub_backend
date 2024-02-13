@@ -4,6 +4,7 @@ const router=require("./router")
 const cors= require("cors")
 const server= express();
 server.use(express.json())
+// server.use(express.static(__dirname+'/public'));
 server.use(cors())
 port=5000;
 server.use("/",router)
