@@ -4,11 +4,14 @@ const router=require("./router")
 const cors= require("cors")
 const server= express();
 server.use(express.json())
+
 // server.use(express.static(__dirname+'/public'));
 server.use(cors())
-port=5000;
+require('dotenv').config()
+const port=process.env.PORT;
 server.use("/",router)
-mongoose.connect("mongodb+srv://karthick:karthick33@bulbul.57vu6qe.mongodb.net/",{useNewUrlParser:true})
+require('dotenv').config()
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>console.log(`database connected`))
 .catch(()=>console.log(`database not connected`))
 
